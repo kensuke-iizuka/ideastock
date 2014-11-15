@@ -7,7 +7,7 @@
 //
 
 #import "SettingViewController.h"
-
+#import "TrackingManager.h"
 @interface SettingViewController ()
 
 @end
@@ -26,7 +26,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [TrackingManager sendScreenTracking:@"設定画面"];
     // Do any additional setup after loading the view.
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg"]];
+    NSString* version = @"1.0.0";
+    versionLabel.text = version;
 }
 
 - (void)didReceiveMemoryWarning
@@ -39,6 +43,7 @@
     NSUserDefaults* pref = [NSUserDefaults standardUserDefaults];
     [pref setObject:nil forKey:@"UserID"];
     [pref setObject:nil forKey:@"pin_code"];
+    [self performSegueWithIdentifier:@"logout" sender:self];
 }
 
 @end

@@ -4,17 +4,17 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods-AFNetworking.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-JMImageCache.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>Pods-Reachability.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-SCLAlertView-Objective-C.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -32,27 +32,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>3700773CC73446059584CD20</key>
+		<key>062737CE3280D21B9947974C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4D9F4FB58D854532AD85688E</key>
+		<key>6FADDF753435FD5F30295357</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>64AAFD4F7E904706BDF0FC1F</key>
+		<key>8453B0093170C6BE9E0EA7D9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A341ECC669D842B6A3BAC7CE</key>
+		<key>DAE9562AD173A48694FAB4CC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F6123CCEF56D48E18BC2A195</key>
+		<key>EF15C0F48C7832A019ADC12D</key>
 		<dict>
 			<key>primary</key>
 			<true/>

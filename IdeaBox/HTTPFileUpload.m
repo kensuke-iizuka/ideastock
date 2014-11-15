@@ -133,16 +133,11 @@
     
     NSError* error;
     NSDictionary* dic = [NSJSONSerialization JSONObjectWithData:resultData options:0 error:&error];
-    if ([[dic objectForKey:@"result" ]isEqualToString:@"success"]) {
-        if([dic objectForKey:@"image_url"]){
-            NSUserDefaults* pref = [NSUserDefaults standardUserDefaults];
-            [pref setObject:[dic objectForKey:@"image_url"] forKey:@"user_image"];
-        }
-        [SVProgressHUD showSuccessWithStatus:@"送信しました"];
-        [[NSNotificationCenter defaultCenter]postNotificationName:@"SuccessPostToUserTimeline" object:self];
+    if([[dic objectForKey:@"result"] isEqualToString:@"success"]){
+        [SVProgressHUD showSuccessWithStatus:@"登録完了"];
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"successPostIdea" object:nil];
     } else {
-        [SVProgressHUD showErrorWithStatus:@"エラー"];
-        
+        [SVProgressHUD showErrorWithStatus:@"登録失敗"];
     }
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     [connection cancel];

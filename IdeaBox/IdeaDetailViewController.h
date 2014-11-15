@@ -13,9 +13,9 @@
     IBOutlet UILabel* sceneLabel;
     IBOutlet UILabel* purposeLabel;
     IBOutlet UITextView* textView;
-    IBOutlet UIImageView* imageView;
     IBOutlet UILabel* titleLabel;
 }
 
 @property(nonatomic,retain)NSMutableDictionary* idea;
+@property(nonatomic,retain)IBOutlet UIImageView* imageView;
 @end

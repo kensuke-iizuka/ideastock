@@ -7,9 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface AppInitializeViewController : UIViewController<NSURLConnectionDataDelegate,NSURLConnectionDelegate>{
+#import "GAITrackedViewController.h"
+@interface AppInitializeViewController : GAITrackedViewController<NSURLConnectionDataDelegate,NSURLConnectionDelegate>{
     NSMutableData* _mData;
+    IBOutlet UIScrollView* scrollView;
+    IBOutlet UIImageView* iconImageView;
+    IBOutlet UILabel* titleLabel;
+    IBOutlet UILabel* titleLabel2;
+    IBOutlet UIButton* loginBtn;
+    IBOutlet UIButton* registerBtn;
 }
 
 @end

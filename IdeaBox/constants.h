@@ -7,4 +7,6 @@
 //
 
 //#define baseURL @"http://192.168.33.12/ideabox/"
-#define baseURL @"http://api.y-ino.com/ideabox/"
+#define baseURL @"http://api.y-ino.com/ideabox"
+
+#define MY_INTERSTITIAL_UNIT_ID @"ca-app-pub-8581016646970146/4589792117"

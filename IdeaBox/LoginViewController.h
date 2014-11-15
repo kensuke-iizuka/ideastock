@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LoginViewController : UIViewController{
+@interface LoginViewController : UIViewController<NSURLConnectionDelegate,NSURLConnectionDataDelegate>{
+    NSMutableData* _mData;
+    IBOutlet UITextField* mailTextField;
+    IBOutlet UITextField* passwdTextField;
     IBOutlet UIScrollView* scrollView;
+    IBOutlet UIButton* removeKeyboardBtn;
 }
 
 @end

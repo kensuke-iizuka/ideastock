@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SettingViewController : UIViewController
-
+@interface SettingViewController : UIViewController{
+    IBOutlet UILabel* versionLabel;
+}
 @end

@@ -7,9 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface IdeaListViewController : UITableViewController<UITableViewDataSource,UITableViewDelegate,NSURLConnectionDataDelegate,NSURLConnectionDelegate>{
+#import "CustomCell.h"
+#import "CustomCellWithData.h"
+#import "CustomCellWithTitle.h"
+@interface IdeaListViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,NSURLConnectionDataDelegate,NSURLConnectionDelegate>{
     NSMutableData* _mData;
+    CustomCell* _stubCell;
+    CustomCellWithData* _stubCellWithData;
+    CustomCellWithTitle* _stubCellWithTitle;
+    BOOL addFlag;
+    BOOL deleteFlag;
 }
 
 @property(nonatomic,retain)IBOutlet UITableView* myTableView;

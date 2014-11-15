@@ -9,12 +9,14 @@
 #import "RegistViewController.h"
 #import "SVProgressHUD.h"
 #import "constants.h"
-
+#import "TrackingManager.h"
 @implementation RegistViewController
 -(void)viewDidLoad{
     [super viewDidLoad];
+    [TrackingManager sendScreenTracking:@"新規登録画面"];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+    scrollView.backgroundColor = [[UIColor alloc]initWithPatternImage:[UIImage imageNamed:@"top_bg"]];
 }
 -(IBAction)regist:(id)sender{
     if([self checkMailTextfield]&&[self checkPasswordTextfield]&&[self checkConfirmPasswordTextfield]){
@@ -36,6 +38,9 @@
     NSString* inputText = [passwdTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     if(inputText.length <= 0){
         [self makeAlert:@"パスワードの入力" :@"パスワードを入力してください"];
+        return NO;
+    } else if(inputText.length<4){
+        [self makeAlert:@"パスワードの入力" :@"パスワードは英数字で4文字以上入力してください"];
         return NO;
     } else {
         return YES;
@@ -66,7 +71,7 @@
 -(void)post{
     _mData = [[NSMutableData alloc]init];
     [SVProgressHUD showWithStatus:@"登録中..." maskType:SVProgressHUDMaskTypeBlack];
-    NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"%@user/regist",baseURL]];
+    NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/user/regist",baseURL]];
     NSString* reqBodyStr = [NSString stringWithFormat:@"mail=%@&password=%@",mailTextField.text,passwdTextField.text];
     NSMutableURLRequest* req = [[NSMutableURLRequest alloc]initWithURL:url];
     [req setHTTPMethod:@"POST"];
@@ -108,6 +113,7 @@
 
 - (void)keyboardWillShow:(NSNotification*)notification {
     [removeKeyboardBtn setEnabled:YES];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"完了" style:UIBarButtonItemStyleBordered target:self action:@selector(removeKeyboard:)];
 }
 
 - (void)keyboardWillHide:(NSNotification*)notification {
@@ -118,6 +124,7 @@
     [scrollView setContentOffset:CGPointMake(0, 0)];
     [scrollView setScrollEnabled:NO];
     [UIView commitAnimations];
+    self.navigationItem.rightBarButtonItem = nil;
 }
 
 -(IBAction)removeKeyboard:(id)sender{
@@ -137,7 +144,7 @@
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:0.3];
     [scrollView setContentSize:CGSizeMake(320, 710)];
-    [scrollView setContentOffset:CGPointMake(0, 80)];
+    [scrollView setContentOffset:CGPointMake(0, 130)];
     [scrollView setScrollEnabled:NO];
     [UIView commitAnimations];
 }
@@ -146,8 +153,10 @@
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:0.3];
     [scrollView setContentSize:CGSizeMake(320, 710)];
-    [scrollView setContentOffset:CGPointMake(0, 80)];
+    [scrollView setContentOffset:CGPointMake(0, 150)];
     [scrollView setScrollEnabled:NO];
     [UIView commitAnimations];
 }
+
+
 @end

@@ -7,13 +7,26 @@
 //
 
 #import "AppDelegate.h"
-
+#import "GAI.h"
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    [self initializeGoogleAnalytics];
     return YES;
+}
+
+-(void)initializeGoogleAnalytics{
+    NSString* kAllowTracking = @"IdeaStock";
+    NSDictionary *appDefaults = @{kAllowTracking: @(YES)};
+    [[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
+    [GAI sharedInstance].optOut =
+    ![[NSUserDefaults standardUserDefaults] boolForKey:kAllowTracking];
+    [GAI sharedInstance].trackUncaughtExceptions = YES;
+    [GAI sharedInstance].dispatchInterval = 120;
+    [[GAI sharedInstance]trackerWithName:@"IdeaStock" trackingId:@"UA-54894966-4"];
+    [[GAI sharedInstance].logger setLogLevel:kGAILogLevelVerbose];
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application

@@ -8,11 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddSourceViewController : UIViewController<NSURLConnectionDelegate,NSURLConnectionDataDelegate,UIGestureRecognizerDelegate>{
+@interface AddSourceViewController : UIViewController<NSURLConnectionDelegate,NSURLConnectionDataDelegate,UITableViewDataSource,UITableViewDelegate>{
     NSMutableData* _mData;
-    int scroll_flag;
-    IBOutlet UIScrollView* scrollView;
     CGPoint _touchBegan;
+    IBOutlet UIImageView* bgImageView;
 }
 
+@property(nonatomic,strong)IBOutlet UITableView* wordTableView;
+@property(nonatomic,strong)NSMutableArray* wordLists;
+@property BOOL perFlag;
+@property BOOL sceFlag;
+@property BOOL purFlag;
+@property BOOL postFlag;
 @end
